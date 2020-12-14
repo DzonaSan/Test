@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<h:form>
+		<p:selectManyMenu value="#{controller.selectedProject}"
+			converter="projectConverter" var="s" filter="true"
+			filterMatchMode="contains" showCheckbox="true" style="width:300px;">
+			<f:selectItems value="#{controller.availableProjests}" var="proj"
+				itemLabel="#{proj.name}" itemValue="#{proj}" />
+			<p:column>
+				<h:outputText value="#{s.name}" />
+			</p:column>
+		</p:selectManyMenu>
+		
+		<p:commandButton value="Submit" action="#{controller.start}"/>
+
+	</h:form>
+</body>
+</html>

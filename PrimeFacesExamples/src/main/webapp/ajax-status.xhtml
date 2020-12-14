@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<h:body> 
+	<p:ajaxStatus>
+		<f:facet name="default">
+			<h:outputText value="Ajax Status: Incomplete" />
+		</f:facet>
+		<f:facet name="start">
+			<h:outputText value="Ajax Status: Started" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="Ajax Status: Completed" />
+		</f:facet>
+	</p:ajaxStatus>
+	<p:ajaxStatus onstart="PF('statusDialog').show()"/>
+	<p:dialog widgetVar="statusDialog" modal="true">
+		<p:graphicImage name="ajaxStatus.jpg"/>
+	</p:dialog>
+	 <h:form>
+	 	<p:commandButton value="Ajax Request" icon="ui-icon-refresh"/>
+	 </h:form>
+	 
+	 <p:spinner />
+ 
+</h:body> 
+</html>

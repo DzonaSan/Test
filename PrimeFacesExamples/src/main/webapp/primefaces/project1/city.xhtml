@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<h:form>
+	<p:messages />
+		<h:selectOneMenu value="#{bean.city}" id="city">
+			<f:selectItems value="#{bean.cityChoices}" />
+			<p:ajax partialSubmit="true" update="suburb" process="@this"
+				listener="#{bean.handleSelect}" event="itemSelect" />
+		</h:selectOneMenu>
+		<br />
+		<h:selectOneMenu value="#{bean.suburb}" id="suburb">
+			<f:selectItems value="#{bean.suburbChoices}" />
+		</h:selectOneMenu>
+		<br />
+		<h:inputText value="#{bean.email}" required="true" />
+	</h:form>
+
+
+	<p:ajaxStatus>
+		<f:facet name="error">
+			<h:outputText value="Error" />
+		</f:facet>
+		<f:facet name="success">
+			<h:outputText value="Success" />
+		</f:facet>
+		<f:facet name="default">
+			<h:outputText value="Idle" />
+		</f:facet>
+		<f:facet name="start">
+			<h:outputText value="Sending" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="Done" />
+		</f:facet>
+	</p:ajaxStatus>
+</h:body>
+</html>

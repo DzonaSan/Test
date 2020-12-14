@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<!-- <script name="jquery/jquery.js" library="primefaces"></script> -->
+</h:head>
+
+<h:body>
+	<div style="width: 500px;">
+		<p:accordionPanel activeIndex="0" dynamic="true">
+			<p:tab title="Welcome Tab">
+				<p:outputLabel value="#{aPanel.journalMessage}"></p:outputLabel>
+			</p:tab>
+			<p:tab title="Component Tab">
+				<p:outputLabel value="#{aPanel.componentMessage}"></p:outputLabel>
+			</p:tab>
+		</p:accordionPanel>
+	</div>
+
+	<p:textEditor secure="false"></p:textEditor>
+	<h:form id="form1">
+		<p:commandButton update=":form2:display,:form2:display2 " />
+	</h:form>
+	<h:form id="form2">
+		<h:outputText value="#{aPanel.journalMessage}" id="display" />
+		<h:outputText value="#{aPanel.journalMessage}" id="display2" />
+	<p:ajaxStatus />
+	</h:form>
+</h:body>
+</html>

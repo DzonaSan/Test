@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<h:body>
+	<h:form>
+	 	<p:growl id="msgs" showDetail="true"/>
+		<!-- <h:messages id="msgs"/> -->
+		<p:panel header="Provide your address" style="margin-borrom:10px">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Country:"/>
+				<p:selectOneMenu value="#{dropDown.country}">
+					<p:ajax listener="#{dropDown.onCountryChange()}" update="city"/>
+					<f:selectItem itemLabel="Select country" itemValue="" noSelectionOption="true"/>
+					<f:selectItems value="#{dropDown.countries}"/>
+				</p:selectOneMenu>
+				<p:outputLabel value="City:"/>
+				<p:selectOneMenu id="city" value="#{dropDown.city}">
+					<f:selectItem itemLabel="Select city" itemValue="" noSelectionOption="true"/>
+					<f:selectItems value="#{dropDown.cities}"/>
+				</p:selectOneMenu>
+			</h:panelGrid>
+		<p:separator/>
+		<p:commandButton value="Submit" update = "msgs" actionListener="#{dropDown.displayLocation()}"  icon="ui-icon-check"/>
+		</p:panel>
+	</h:form> 
+
+</h:body> 
+</html>
